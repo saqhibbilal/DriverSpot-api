@@ -7,7 +7,7 @@ const client = new MongoClient(uri);
 export const getPendingBookings = async (req, res) => {
     try {
         await client.connect();
-        const db = client.db("partners");  
+        const db = client.db("Partners");  
         const bookingsCollection = db.collection("bookings");
 
         const pendingBookings = await bookingsCollection
@@ -27,7 +27,7 @@ export const getPendingBookings = async (req, res) => {
 export const acceptBooking = async (req, res) => {
     try {
         await client.connect();
-        const db = client.db("partners");
+        const db = client.db("Partners");
         const bookingsCollection = db.collection("bookings");
 
         const { bookingId, drivers, poc } = req.body; 
@@ -56,7 +56,7 @@ export const acceptBooking = async (req, res) => {
 export const rejectBooking = async (req, res) => {
     try {
         await client.connect();
-        const db = client.db("partners");
+        const db = client.db("Partners");
         const bookingsCollection = db.collection("bookings");
 
         const { bookingId, reason } = req.body;  
