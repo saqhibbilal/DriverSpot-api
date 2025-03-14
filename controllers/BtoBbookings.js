@@ -17,9 +17,10 @@ export const getPendingBookings = async (req, res) => {
         res.status(200).json({ success: true, data: pendingBookings });
     } catch (error) {
         res.status(500).json({ success: false, message: "Server Error", error });
-    } finally {
-        await client.close();
-    }
+    } 
+    /*finally {
+      await client.close();
+    }*/
 };
 
 
