@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId} from 'mongodb';
 
 const uri = "mongodb+srv://sunanthsamala7:MmQXJz6cCKld1vsY@users.lzhtx.mongodb.net/?retryWrites=true&w=majority&appName=users";
 const client = new MongoClient(uri);
@@ -37,7 +37,7 @@ export const acceptBooking = async (req, res) => {
             { _id: new ObjectId(bookingId) },
             {
                 $set: {
-                    booking_status: "accepted",
+                    booking_status: "completed",
                     drivers: Array.isArray(drivers) ? drivers : [drivers], 
                     poc: poc
                 }
@@ -79,7 +79,6 @@ export const rejectBooking = async (req, res) => {
         await client.close();
     }
 };
-
 
 //fetching Available Drivers
 export const getAvailableDrivers = async (req, res) => {
